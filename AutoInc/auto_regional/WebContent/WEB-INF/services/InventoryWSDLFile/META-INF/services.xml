@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- This file was auto-generated from WSDL --><!-- by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:33:49 IST) --><serviceGroup>
+    <service name="InventoryWSDLFile">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="com.autoinc.www.inventorywsdlfile.InventoryWSDLFileMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">com.autoinc.www.inventorywsdlfile.InventoryWSDLFileSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="addParts" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.autoinc.com/InventoryWSDLFile/">
+            <actionMapping>http://www.autoinc.com/InventoryWSDLFile/addParts</actionMapping>
+            <outputActionMapping>http://www.autoinc.com/InventoryWSDLFile/InventoryWSDLFile/addPartsResponse</outputActionMapping>
+        </operation>
+        <operation name="supplyParts" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.autoinc.com/InventoryWSDLFile/">
+            <actionMapping>http://www.autoinc.com/InventoryWSDLFile/supplyParts</actionMapping>
+            <outputActionMapping>http://www.autoinc.com/InventoryWSDLFile/InventoryWSDLFile/supplyPartsResponse</outputActionMapping>
+        </operation>
+        <operation name="updateParts" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.autoinc.com/InventoryWSDLFile/">
+            <actionMapping>http://www.autoinc.com/InventoryWSDLFile/updateParts</actionMapping>
+            <outputActionMapping>http://www.autoinc.com/InventoryWSDLFile/InventoryWSDLFile/updatePartsResponse</outputActionMapping>
+        </operation>
+        <operation name="getParts" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.autoinc.com/InventoryWSDLFile/">
+            <actionMapping>http://www.autoinc.com/InventoryWSDLFile/getParts</actionMapping>
+            <outputActionMapping>http://www.autoinc.com/InventoryWSDLFile/InventoryWSDLFile/getPartsResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

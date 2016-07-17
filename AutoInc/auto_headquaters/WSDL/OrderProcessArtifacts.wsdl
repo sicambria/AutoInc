@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="buffalo.autoinc.com" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:wsdl="http://buffalo.bank.com/PaymentGateway/" xmlns:wsdl1="http://www.autoinc.com/CarInventoryWSDLFile/" xmlns:wsdl2="http://autoinc.com/Resupply/" xmlns:wsdl3="http://autoinc.com/Manufacturing/" xmlns:wsdl4="http://autoinc.com/Auto_Regional/" xmlns:wsdl5="http://www.autoinc.com/AutoShippingWS/" name="OrderProcess" targetNamespace="buffalo.autoinc.com">
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TYPE DEFINITION - List of types participating in this BPEL process 
+     The BPEL Designer will generate default request and response types
+     but you can define or import any XML Schema type and use them as part 
+     of the message types.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <plnk:partnerLinkType name="BankPLT">
+    <plnk:role name="doPayment" portType="wsdl:PaymentGateway"/>
+  </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="CarInventoryPLT">
+    <plnk:role name="checkCars" portType="wsdl1:CarInventoryWSDLFile"/>
+  </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="RESalesPLT">
+    <plnk:role name="doRESales" portType="wsdl4:RegionalSalesWSDLFile"/>
+  </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="ShippingPLT">
+    <plnk:role name="doShipping" portType="wsdl5:AutoShippingWS"/>
+  </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="ResupplyPLT">
+    <plnk:role name="doResupply" portType="wsdl2:ResupplyWS"/>
+  </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="ManufacturingPLT">
+    <plnk:role name="doManufacture" portType="wsdl3:ManufacturingWS"/>
+  </plnk:partnerLinkType>
+    <import location="PaymentGateway.wsdl" namespace="http://buffalo.bank.com/PaymentGateway/"/>
+    <import location="CarInventoryWSDLFile.wsdl" namespace="http://www.autoinc.com/CarInventoryWSDLFile/"/>
+    <import location="RegionalSalesWSDLFile.wsdl" namespace="http://autoinc.com/Auto_Regional/"/>
+    <import location="AutoShippingWS.wsdl" namespace="http://www.autoinc.com/AutoShippingWS/"/>
+    <import location="Resupply.wsdl" namespace="http://autoinc.com/Resupply/"/>
+    <import location="Manufacturing.wsdl" namespace="http://autoinc.com/Manufacturing/"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="buffalo.autoinc.com">
+
+            <element name="OrderProcessRequest">
+                <complexType>
+                    <sequence>
+                    	<element name="orderId" type="int"/>
+                    	<element name="customerId" type="int"/>
+                    	<element name="customerName" type="string"/>
+                    	<element name="address" type="string"/>
+                    	<element name="country" type="string"/>
+                    	<element name="accountNumber" type="string"/>
+                    	<element name="bank" type="string"/>
+                    	<element name="model" type="string"/>
+                    	<element name="edition" type="string"/>
+                    	<element name="color" type="string"/>
+                    	<element name="quantity" type="int"/>
+                    	<element name="amount" type="int"/>
+                    </sequence>
+                </complexType>
+            </element>
+
+            <element name="OrderProcessResponse">
+                <complexType>
+                    <sequence>
+                    	<element name="result" type="string" />
+                    	<element name="resultPayment" type="boolean" />
+                    	<element name="resultRESales" type="boolean" />
+                    	<element name="resultCheckCars" type="boolean" />
+                    	<element name="resultResupply" type="boolean" />
+                    	<element name="resultManufacturing"
+                    		type="boolean">
+                    	</element>
+                    	<element name="resultShipment" type="boolean" />
+                    	<element name="orderedCars" type="int" />
+                    	<element name="transactionId" type="int" />
+                    	<element name="deliveryDate" type="string"></element>
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+    </types>
+
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     MESSAGE TYPE DEFINITION - Definition of the message types used as 
+     part of the port type defintions
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <message name="OrderProcessRequestMessage">
+        <part element="tns:OrderProcessRequest" name="payload"/>
+    </message>
+    <message name="OrderProcessResponseMessage">
+        <part element="tns:OrderProcessResponse" name="payload"/>
+    </message>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     PORT TYPE DEFINITION - A port type groups a set of operations into
+     a logical service unit.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+
+    <!-- portType implemented by the OrderProcess BPEL process -->
+    <portType name="OrderProcess">
+        <operation name="process">
+            <input message="tns:OrderProcessRequestMessage"/>
+            <output message="tns:OrderProcessResponseMessage"/>
+        </operation>
+    </portType>   
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     PARTNER LINK TYPE DEFINITION
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <plnk:partnerLinkType name="OrderProcess">
+        <plnk:role name="OrderProcessProvider" portType="tns:OrderProcess"/>
+    </plnk:partnerLinkType>
+    
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     BINDING DEFINITION - Defines the message format and protocol details
+     for a web service.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <binding name="OrderProcessBinding" type="tns:OrderProcess">
+    	<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    	<operation name="process">
+    		<soap:operation soapAction="buffalo.autoinc.com/process"/>
+    		<input>
+    			<soap:body use="literal"/>
+    		</input>
+    		<output>
+    			<soap:body use="literal"/>
+    		</output>
+    	</operation>
+    </binding>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     SERVICE DEFINITION - A service groups a set of ports into
+     a service unit.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <service name="OrderProcessService">
+    	<port binding="tns:OrderProcessBinding" name="OrderProcessPort">
+    		<soap:address location="http://localhost:8080/ode/processes/OrderProcess"/>
+    	</port>
+    </service>
+</definitions>

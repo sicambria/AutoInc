@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="AutoShippingWS" targetNamespace="http://www.autoinc.com/AutoShippingWS/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.autoinc.com/AutoShippingWS/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.autoinc.com/AutoShippingWS/">
+      <xsd:element name="doShipping">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="orderId" type="xsd:int"/>
+          	<xsd:element name="customerName" type="xsd:string"/>
+          	<xsd:element name="customerAddress" type="xsd:string"/>
+          	<xsd:element name="customerCountry" type="xsd:string"/>
+          	<xsd:element name="modelName" type="xsd:string"/>
+          	<xsd:element name="modelEdition" type="xsd:string"/>
+          	<xsd:element name="modelColor" type="xsd:string"/>
+          	<xsd:element name="quantity" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="doShippingResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="result" type="xsd:boolean"/>
+          	<xsd:element name="shippingStatus" type="xsd:string"/>
+
+          	<xsd:element name="deliveryDate" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getStatus">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="orderId" type="xsd:int"/>
+      			<xsd:element name="shippingId" type="xsd:int"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getStatusResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+                        <xsd:element name="result" type="xsd:boolean"/>
+                        <xsd:element name="orderId" type="xsd:int"/>
+      			<xsd:element name="shippingId" type="xsd:int"/>
+      			<xsd:element name="quantity" type="xsd:int"/>
+      			<xsd:element name="customerName" type="xsd:string"/>
+      			<xsd:element name="customerAddress" type="xsd:string">
+      			</xsd:element>
+      			<xsd:element name="customerCountry" type="xsd:string">
+      			</xsd:element>
+      			<xsd:element name="modelName" type="xsd:string"/>
+      			<xsd:element name="modelEdition" type="xsd:string"/>
+      			<xsd:element name="modelColor" type="xsd:string"/>
+
+      			<xsd:element name="shippingStatus" type="xsd:string">
+      			</xsd:element>
+      			<xsd:element name="deliveryDate" type="xsd:date"/>
+
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="cancelShipping">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="shippingId" type="xsd:int"/>
+      			<xsd:element name="orderId" type="xsd:int"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="cancelShippingResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="result" type="xsd:boolean"/>
+      			<xsd:element name="comment" type="xsd:string"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getStatusResponse">
+    <wsdl:part name="parameters" element="tns:getStatusResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getStatusRequest">
+    <wsdl:part name="parameters" element="tns:getStatus">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doShippingResponse">
+    <wsdl:part name="parameters" element="tns:doShippingResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelShippingResponse">
+    <wsdl:part name="parameters" element="tns:cancelShippingResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="doShippingRequest">
+    <wsdl:part name="parameters" element="tns:doShipping">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelShippingRequest">
+    <wsdl:part name="parameters" element="tns:cancelShipping">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AutoShippingWS">
+    <wsdl:operation name="doShipping">
+      <wsdl:input message="tns:doShippingRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:doShippingResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStatus">
+      <wsdl:input message="tns:getStatusRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getStatusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelShipping">
+      <wsdl:input message="tns:cancelShippingRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:cancelShippingResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AutoShippingWSSOAP" type="tns:AutoShippingWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="doShipping">
+      <soap:operation soapAction="http://www.autoinc.com/AutoShippingWS/doShipping"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStatus">
+      <soap:operation soapAction="http://www.autoinc.com/AutoShippingWS/getStatus"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelShipping">
+      <soap:operation soapAction="http://www.autoinc.com/AutoShippingWS/cancelShipping"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AutoShippingWS">
+    <wsdl:port name="AutoShippingWSSOAP" binding="tns:AutoShippingWSSOAP">
+      <soap:address location="http://213.165.86.215:8080/Auto_ShippingWS/services/AutoShippingWS/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

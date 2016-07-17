@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="Auto_Regional" targetNamespace="http://autoinc.com/Auto_Regional/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://autoinc.com/Auto_Regional/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://autoinc.com/Auto_Regional/">
+      <xsd:element name="receiveCarsFromManufacture">
+        <xsd:complexType>
+          <xsd:sequence>
+
+          	<xsd:element name="orderId" type="xsd:int"/>
+          	<xsd:element name="modelEdition" type="xsd:string"/>
+          	<xsd:element name="modelName" type="xsd:string"/>
+          	<xsd:element name="modelColor" type="xsd:string"/>
+          	<xsd:element name="quantity" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="receiveCarsFromManufactureResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element maxOccurs="1" minOccurs="1" name="orderId" type="xsd:int"/>
+          	<xsd:element maxOccurs="1" minOccurs="0" name="shippingStatus" type="xsd:string"/>
+          	<xsd:element maxOccurs="1" minOccurs="1" name="result" type="xsd:boolean"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="receiveOrder">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="orderId" type="xsd:int"/>
+      			<xsd:element name="customerId" type="xsd:int"/>
+      			<xsd:element name="modelName" type="xsd:string"/>
+      			<xsd:element name="modelEdition" type="xsd:string"/>
+      			<xsd:element name="modelColor" type="xsd:string"/>
+      			<xsd:element name="quantity" type="xsd:int"/>
+      			<xsd:element name="customer_name" type="xsd:string"/>
+      			<xsd:element name="customer_address" type="xsd:string">
+      			</xsd:element>
+      			<xsd:element name="customer_country" type="xsd:string">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="receiveOrderResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="orderId" type="xsd:int"/>
+      			<xsd:element name="shipping_status" type="xsd:string">
+      			</xsd:element>
+      			<xsd:element name="result" type="xsd:boolean"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="cancelOrder">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="orderId" type="xsd:int"/>
+
+      			<xsd:element name="customerId" type="xsd:int"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="cancelOrderResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="result" type="xsd:boolean"/>
+      			<xsd:element name="shippingId" type="xsd:int"/>
+      			<xsd:element name="comment" type="xsd:string"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="receiveCarsFromManufactureResponse">
+    <wsdl:part name="parameters" element="tns:receiveCarsFromManufactureResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelOrderRequest">
+    <wsdl:part name="parameters" element="tns:cancelOrder">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelOrderResponse">
+    <wsdl:part name="parameters" element="tns:cancelOrderResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="receiveCarsFromManufactureRequest">
+    <wsdl:part name="parameters" element="tns:receiveCarsFromManufacture">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="receiveOrderRequest">
+    <wsdl:part name="parameters" element="tns:receiveOrder">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="receiveOrderResponse">
+    <wsdl:part name="parameters" element="tns:receiveOrderResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="RegionalSalesWSDLFile">
+    <wsdl:operation name="receiveCarsFromManufacture">
+      <wsdl:input message="tns:receiveCarsFromManufactureRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:receiveCarsFromManufactureResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveOrder">
+      <wsdl:input message="tns:receiveOrderRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:receiveOrderResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelOrder">
+      <wsdl:input message="tns:cancelOrderRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:cancelOrderResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Auto_RegionalSOAP" type="tns:RegionalSalesWSDLFile">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="receiveCarsFromManufacture">
+      <soap:operation soapAction="http://autoinc.com/Auto_Regional/receiveCarsFromManufacture"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveOrder">
+      <soap:operation soapAction="http://autoinc.com/Auto_Regional/receiveOrder"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelOrder">
+      <soap:operation soapAction="http://autoinc.com/Auto_Regional/cancelOrder"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RegionalSalesWSDLFile">
+    <wsdl:port name="Auto_RegionalSOAP" binding="tns:Auto_RegionalSOAP">
+      <soap:address location="http://s17975972.onlinehome-server.info:8080/Auto_Regional/services/RegionalSalesWSDLFile/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

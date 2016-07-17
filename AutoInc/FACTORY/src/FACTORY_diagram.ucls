@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.8" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="com.autoinc.auto_regional.RegionalSalesWSDLFileStub.ExtensionMapper" 
+    project="FACTORY" file="/FACTORY/src/com/autoinc/auto_regional/RegionalSalesWSDLFileStub.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="97" width="291" x="37" y="-182"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.autoinc.auto_regional.RegionalSalesWSDLFileStub.ReceiveOrderResponse.Factory" 
+    project="FACTORY" file="/FACTORY/src/com/autoinc/auto_regional/RegionalSalesWSDLFileStub.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="97" width="271" x="368" y="657"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.autoinc.auto_regional.RegionalSalesWSDLFileStub.ReceiveOrderResponse" 
+    project="FACTORY" file="/FACTORY/src/com/autoinc/auto_regional/RegionalSalesWSDLFileStub.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="475" width="344" x="368" y="-182"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.autoinc.auto_regional.RegionalSalesWSDLFileStub.ReceiveOrder" 
+    project="FACTORY" file="/FACTORY/src/com/autoinc/auto_regional/RegionalSalesWSDLFileStub.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="799" width="344" x="752" y="-182"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.autoinc.auto_regional.RegionalSalesWSDLFileStub.ReceiveCarsFromManufacture" 
+    project="FACTORY" file="/FACTORY/src/com/autoinc/auto_regional/RegionalSalesWSDLFileStub.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="583" width="344" x="1136" y="-182"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" 
+    name="com.autoinc.auto_regional.RegionalSalesWSDLFileStub.ReceiveCarsFromManufacture.Factory" project="FACTORY" 
+    file="/FACTORY/src/com/autoinc/auto_regional/RegionalSalesWSDLFileStub.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="97" width="304" x="1136" y="657"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="com.autoinc.auto_regional.RegionalSalesWSDLFileStub" project="FACTORY" 
+    file="/FACTORY/src/com/autoinc/auto_regional/RegionalSalesWSDLFileStub.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="565" width="564" x="752" y="-787"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="com.autoinc.auto_regional.RegionalSalesWSDLFileStub.ReceiveOrder.Factory" 
+    project="FACTORY" file="/FACTORY/src/com/autoinc/auto_regional/RegionalSalesWSDLFileStub.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="97" width="223" x="752" y="657"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" 
+    name="com.autoinc.auto_regional.RegionalSalesWSDLFileStub.ReceiveCarsFromManufactureResponse" project="FACTORY" 
+    file="/FACTORY/src/com/autoinc/auto_regional/RegionalSalesWSDLFileStub.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="511" width="344" x="1520" y="-182"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" 
+    name="com.autoinc.auto_regional.RegionalSalesWSDLFileStub.ReceiveCarsFromManufactureResponse.Factory" 
+    project="FACTORY" file="/FACTORY/src/com/autoinc/auto_regional/RegionalSalesWSDLFileStub.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="97" width="352" x="1512" y="657"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <nesting id="11">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
+  </nesting>  
+  <nesting id="12">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="9"/>  
+  </nesting>  
+  <nesting id="13">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="1"/>  
+  </nesting>  
+  <nesting id="14">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="6"/>  
+  </nesting>  
+  <nesting id="15">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="10"/>  
+  </nesting>  
+  <nesting id="16">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </nesting>  
+  <nesting id="17">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="3"/>  
+  </nesting>  
+  <nesting id="18">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="4"/>  
+  </nesting>  
+  <nesting id="19">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="5"/>  
+  </nesting>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

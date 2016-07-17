@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- This file was auto-generated from WSDL --><!-- by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:33:49 IST) --><serviceGroup>
+    <service name="RegionalSalesWSDLFile">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="com.autoinc.auto_regional.RegionalSalesWSDLFileMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">com.autoinc.auto_regional.RegionalSalesWSDLFileSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="receiveOrder" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://autoinc.com/Auto_Regional/">
+            <actionMapping>http://autoinc.com/Auto_Regional/receiveOrder</actionMapping>
+            <outputActionMapping>http://autoinc.com/Auto_Regional/RegionalSalesWSDLFile/receiveOrderResponse</outputActionMapping>
+        </operation>
+        <operation name="cancelOrder" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://autoinc.com/Auto_Regional/">
+            <actionMapping>http://autoinc.com/Auto_Regional/cancelOrder</actionMapping>
+            <outputActionMapping>http://autoinc.com/Auto_Regional/RegionalSalesWSDLFile/cancelOrderResponse</outputActionMapping>
+        </operation>
+        <operation name="receiveCarsFromManufacture" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://autoinc.com/Auto_Regional/">
+            <actionMapping>http://autoinc.com/Auto_Regional/receiveCarsFromManufacture</actionMapping>
+            <outputActionMapping>http://autoinc.com/Auto_Regional/RegionalSalesWSDLFile/receiveCarsFromManufactureResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

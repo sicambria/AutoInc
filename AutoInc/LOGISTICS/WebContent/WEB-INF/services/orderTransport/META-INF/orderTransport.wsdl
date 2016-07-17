@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="orderTransport" targetNamespace="http://transportinc.com/orderTransport/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://transportinc.com/orderTransport/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://transportinc.com/orderTransport/">
+      <xsd:element name="OrderTransport">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="supplier" type="xsd:string"/>
+          	<xsd:element name="orderId" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="OrderTransportResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="confirmed" type="xsd:boolean"/>
+          	<xsd:element name="deliveryDate" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="cancelOrderTransport">
+      	<xsd:complexType>
+      		<xsd:sequence>
+                        <xsd:element name="supplier" type="xsd:string"/>
+                        <xsd:element name="orderId" type="xsd:int"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="cancelOrderTransportResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="orderCancelled" type="xsd:boolean"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="OrderTransportRequest">
+    <wsdl:part name="parameters" element="tns:OrderTransport">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="OrderTransportResponse">
+    <wsdl:part name="parameters" element="tns:OrderTransportResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelOrderTransportRequest">
+    <wsdl:part name="parameters" element="tns:cancelOrderTransport">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelOrderTransportResponse">
+    <wsdl:part name="parameters" element="tns:cancelOrderTransportResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="orderTransportWS">
+    <wsdl:operation name="OrderTransport">
+      <wsdl:input message="tns:OrderTransportRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:OrderTransportResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelOrderTransport">
+      <wsdl:input message="tns:cancelOrderTransportRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:cancelOrderTransportResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="orderTransportSOAP" type="tns:orderTransportWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="OrderTransport">
+      <soap:operation soapAction="http://transportinc.com/orderTransport/OrderTransport"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelOrderTransport">
+      <soap:operation soapAction="http://transportinc.com/orderTransport/cancelOrderTransport"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="orderTransport">
+    <wsdl:port name="orderTransportSOAP" binding="tns:orderTransportSOAP">
+      <soap:address location="http://localhost:8080/LOGISTICS/services/orderTransport"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

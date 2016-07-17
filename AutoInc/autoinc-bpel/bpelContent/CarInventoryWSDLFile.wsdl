@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="CarInventoryWSDLFile" targetNamespace="http://www.autoinc.com/CarInventoryWSDLFile/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.autoinc.com/CarInventoryWSDLFile/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.autoinc.com/CarInventoryWSDLFile/">
+      <xsd:element name="checkForCars">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="modelName" type="xsd:string"/>
+          	<xsd:element name="edition" type="xsd:string"/>
+          	<xsd:element name="color" type="xsd:string"/>
+          	<xsd:element name="country" type="xsd:string"/>
+          	<xsd:element name="quantity" type="xsd:int"/>
+          	<xsd:element name="orderId" type="xsd:int"/>
+          	<xsd:element name="customerName" type="xsd:string"/>
+          	<xsd:element name="customerAddress" type="xsd:string"/>
+          	<xsd:element name="customerId" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="checkForCarsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="result" type="xsd:boolean"/>
+          	<xsd:element name="quantity" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="checkForCarsResponse">
+    <wsdl:part name="parameters" element="tns:checkForCarsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkForCarsRequest">
+    <wsdl:part name="parameters" element="tns:checkForCars">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CarInventoryWSDLFile">
+    <wsdl:operation name="checkForCars">
+      <wsdl:input message="tns:checkForCarsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:checkForCarsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CarInventoryWSDLFileSOAP" type="tns:CarInventoryWSDLFile">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="checkForCars">
+      <soap:operation soapAction="http://www.autoinc.com/CarInventoryWSDLFile/checkForCars"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CarInventoryWSDLFile">
+    <wsdl:port name="CarInventoryWSDLFileSOAP" binding="tns:CarInventoryWSDLFileSOAP">
+      <soap:address location="http://s17975972.onlinehome-server.info:8080/Auto_Regional/services/CarInventoryWSDLFile/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

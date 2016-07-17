@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="Resupply" targetNamespace="http://autoinc.com/Resupply/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://autoinc.com/Resupply/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://autoinc.com/Resupply/">
+      <xsd:element name="resupplyOperation">
+        <xsd:complexType>
+          <xsd:sequence>
+                        <xsd:element name="orderId" type="xsd:int"/>
+                        <xsd:element name="quantity" type="xsd:int"/>
+          	<xsd:element name="model" type="xsd:string"/>
+          	<xsd:element name="color" type="xsd:string"/>
+          	<xsd:element name="edition" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="resupplyOperationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="suppliesReady" type="xsd:boolean"/>
+          	<xsd:element name="deliveryDate" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="cancelResupplyOperation">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="orderId" type="xsd:int"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="cancelResupplyOperationResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="resupplyCancelled" type="xsd:boolean"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="cancelResupplyOperationRequest">
+    <wsdl:part name="parameters" element="tns:cancelResupplyOperation">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="resupplyOperationRequest">
+    <wsdl:part name="parameters" element="tns:resupplyOperation">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelResupplyOperationResponse">
+    <wsdl:part name="parameters" element="tns:cancelResupplyOperationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="resupplyOperationResponse">
+    <wsdl:part name="parameters" element="tns:resupplyOperationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ResupplyWS">
+    <wsdl:operation name="resupplyOperation">
+      <wsdl:input message="tns:resupplyOperationRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:resupplyOperationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelResupplyOperation">
+      <wsdl:input message="tns:cancelResupplyOperationRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:cancelResupplyOperationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ResupplySOAP" type="tns:ResupplyWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="resupplyOperation">
+      <soap:operation soapAction="http://autoinc.com/Resupply/resupplyOperation"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelResupplyOperation">
+      <soap:operation soapAction="http://autoinc.com/Resupply/cancelResupplyOperation"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Resupply">
+    <wsdl:port name="ResupplySOAP" binding="tns:ResupplySOAP">
+      <soap:address location="http://localhost:8080/FACTORY/services/ResupplyWS/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

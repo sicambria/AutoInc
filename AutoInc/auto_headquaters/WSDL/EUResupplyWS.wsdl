@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="EUResupplyWS" targetNamespace="http://autoinc.eu/EUResupplyWS/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://autoinc.eu/EUResupplyWS/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://autoinc.eu/EUResupplyWS/">
+      <xsd:element name="ReserveStockOperation">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="orderId" type="xsd:int"/>
+          	<xsd:element name="chassisType" type="xsd:string"/>
+          	<xsd:element name="quantity" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReserveStockOperationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="available" type="xsd:boolean"/>
+          	<xsd:element name="deliveryDate" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ReserveStockOperationRequest">
+    <wsdl:part name="parameters" element="tns:ReserveStockOperation">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ReserveStockOperationResponse">
+    <wsdl:part name="parameters" element="tns:ReserveStockOperationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EUResupplyWS">
+    <wsdl:operation name="ReserveStockOperation">
+      <wsdl:input message="tns:ReserveStockOperationRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:ReserveStockOperationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EUResupplyWSSOAP" type="tns:EUResupplyWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ReserveStockOperation">
+      <soap:operation soapAction="http://autoinc.eu/EUResupplyWS/ReserveStockOperation"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EUResupplyWS">
+    <wsdl:port name="EUResupplyWSSOAP" binding="tns:EUResupplyWSSOAP">
+      <soap:address location="http://213.165.86.215:8080/EU_SUPPLIER/services/EUResupplyWS/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

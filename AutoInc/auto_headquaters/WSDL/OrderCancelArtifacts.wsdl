@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="buffalocancel.autoinc.com" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:wsdl="http://buffalo.bank.com/CancelTransaction/" xmlns:wsdl1="http://autoinc.com/Auto_Regional/" xmlns:wsdl2="http://www.autoinc.com/AutoShippingWS/" name="OrderCancel" targetNamespace="buffalocancel.autoinc.com">
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TYPE DEFINITION - List of types participating in this BPEL process 
+     The BPEL Designer will generate default request and response types
+     but you can define or import any XML Schema type and use them as part 
+     of the message types.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <plnk:partnerLinkType name="BankPLT">
+    <plnk:role name="doCancelTransaction" portType="wsdl:CancelTransaction"/>
+  </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="RESalesPLT">
+    <plnk:role name="doCancelRESales" portType="wsdl1:RegionalSalesWSDLFile"/>
+  </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="ShippingPLT">
+    <plnk:role name="CancelShipping" portType="wsdl2:AutoShippingWS"/>
+  </plnk:partnerLinkType>
+    <import location="CancelTransaction.wsdl" namespace="http://buffalo.bank.com/CancelTransaction/"/>
+    <import location="RegionalSalesWSDLFile.wsdl" namespace="http://autoinc.com/Auto_Regional/"/>
+    <import location="AutoShippingWS.wsdl" namespace="http://www.autoinc.com/AutoShippingWS/"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="buffalocancel.autoinc.com">
+
+            <element name="OrderCancelRequest">
+                <complexType>
+                    <sequence>
+                    	<element name="transactionId" type="int"/>
+
+                        <element name="orderId" type="int"/>
+                        <element name="customerId" type="int"/>
+                    </sequence>
+                </complexType>
+            </element>
+
+            <element name="OrderCancelResponse">
+                <complexType>
+                    <sequence>
+                    	<element name="resultTransaction"
+                    		type="boolean" />
+                    	<element name="resultRESales" type="boolean" />
+                    	<element name="resultShipping" type="boolean"></element>
+                    	<element name="comment" type="string"></element>
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+    </types>
+
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     MESSAGE TYPE DEFINITION - Definition of the message types used as 
+     part of the port type defintions
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <message name="OrderCancelRequestMessage">
+        <part element="tns:OrderCancelRequest" name="payload"/>
+    </message>
+    <message name="OrderCancelResponseMessage">
+        <part element="tns:OrderCancelResponse" name="payload"/>
+    </message>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     PORT TYPE DEFINITION - A port type groups a set of operations into
+     a logical service unit.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+
+    <!-- portType implemented by the OrderCancel BPEL process -->
+    <portType name="OrderCancel">
+        <operation name="process">
+            <input message="tns:OrderCancelRequestMessage"/>
+            <output message="tns:OrderCancelResponseMessage"/>
+        </operation>
+    </portType>   
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     PARTNER LINK TYPE DEFINITION
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <plnk:partnerLinkType name="OrderCancel">
+        <plnk:role name="OrderCancelProvider" portType="tns:OrderCancel"/>
+    </plnk:partnerLinkType>
+    
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     BINDING DEFINITION - Defines the message format and protocol details
+     for a web service.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <binding name="OrderCancelBinding" type="tns:OrderCancel">
+    	<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    	<operation name="process">
+    		<soap:operation soapAction="buffalocancel.autoinc.com/process"/>
+    		<input>
+    			<soap:body use="literal"/>
+    		</input>
+    		<output>
+    			<soap:body use="literal"/>
+    		</output>
+    	</operation>
+    </binding>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     SERVICE DEFINITION - A service groups a set of ports into
+     a service unit.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <service name="OrderCancelService">
+    	<port binding="tns:OrderCancelBinding" name="OrderCancelPort">
+    		<soap:address location="http://localhost:8080/ode/processes/OrderCancel"/>
+    	</port>
+    </service>
+</definitions>

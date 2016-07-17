@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.8" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="eu.model.ChassisClass" project="EU_SUPPLIER" 
+    file="/EU_SUPPLIER/src/eu/model/ChassisClass.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="306" y="453"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="2" language="java" name="eu.model" project="EU_SUPPLIER" file="/EU_SUPPLIER/src/eu/model" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="209" y="141"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="3" language="java" name="eu.model.ChassisObject" project="EU_SUPPLIER" 
+    file="/EU_SUPPLIER/src/eu/model/ChassisObject.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="102" y="357"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="eu.model.InventoryClass" project="EU_SUPPLIER" 
+    file="/EU_SUPPLIER/src/eu/model/InventoryClass.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="311" y="304"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="5" language="java" name="eu.autoinc.euresupplyws" project="EU_SUPPLIER" 
+    file="/EU_SUPPLIER/src/eu/autoinc/euresupplyws" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="48" width="166" x="755" y="135"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="6" language="java" name="eu.autoinc.euresupplyws.ExtensionMapper" project="EU_SUPPLIER" 
+    file="/EU_SUPPLIER/src/eu/autoinc/euresupplyws/ExtensionMapper.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="97" width="291" x="507" y="194"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="eu.autoinc.euresupplyws.ReserveStockOperationResponse" project="EU_SUPPLIER" 
+    file="/EU_SUPPLIER/src/eu/autoinc/euresupplyws/ReserveStockOperationResponse.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="421" width="344" x="838" y="194"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="eu.autoinc.euresupplyws.EUResupplyWSSkeleton" project="EU_SUPPLIER" 
+    file="/EU_SUPPLIER/src/eu/autoinc/euresupplyws/EUResupplyWSSkeleton.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="97" width="420" x="2148" y="194"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="eu.autoinc.euresupplyws.EUResupplyWSCallbackHandler" project="EU_SUPPLIER" 
+    file="/EU_SUPPLIER/src/eu/autoinc/euresupplyws/EUResupplyWSCallbackHandler.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="169" width="390" x="1222" y="194"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="10" language="java" name="eu.autoinc.euresupplyws.EUResupplyWSSkeletonInterface" project="EU_SUPPLIER" 
+    file="/EU_SUPPLIER/src/eu/autoinc/euresupplyws/EUResupplyWSSkeletonInterface.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="79" width="420" x="2148" y="709"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="11" language="java" name="eu.autoinc.euresupplyws.ReserveStockOperation.Factory" project="EU_SUPPLIER" 
+    file="/EU_SUPPLIER/src/eu/autoinc/euresupplyws/ReserveStockOperation.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="97" width="270" x="3121" y="709"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="eu.autoinc.euresupplyws.EUResupplyWSStub" project="EU_SUPPLIER" 
+    file="/EU_SUPPLIER/src/eu/autoinc/euresupplyws/EUResupplyWSStub.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="475" width="456" x="1652" y="194"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="eu.autoinc.euresupplyws.ReserveStockOperationResponse.Factory" 
+    project="EU_SUPPLIER" file="/EU_SUPPLIER/src/eu/autoinc/euresupplyws/ReserveStockOperationResponse.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="97" width="318" x="838" y="709"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="eu.autoinc.euresupplyws.ReserveStockOperation" project="EU_SUPPLIER" 
+    file="/EU_SUPPLIER/src/eu/autoinc/euresupplyws/ReserveStockOperation.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="475" width="344" x="3121" y="194"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="eu.autoinc.euresupplyws.EUResupplyWSMessageReceiverInOut" project="EU_SUPPLIER" 
+    file="/EU_SUPPLIER/src/eu/autoinc/euresupplyws/EUResupplyWSMessageReceiverInOut.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="241" width="473" x="2608" y="194"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <nesting id="16">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="13"/>  
+  </nesting>  
+  <realization id="17">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="10"/>  
+  </realization>  
+  <nesting id="18">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="11"/>  
+  </nesting>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

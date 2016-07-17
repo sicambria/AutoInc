@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="Manufacturing" targetNamespace="http://autoinc.com/Manufacturing/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://autoinc.com/Manufacturing/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://autoinc.com/Manufacturing/">
+      <xsd:element name="manufactureOperation">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="orderId" type="xsd:int"/>
+          	<xsd:element name="model" type="xsd:string"/>
+          	<xsd:element name="edition" type="xsd:string"/>
+          	<xsd:element name="quantity" type="xsd:int"/>
+          	<xsd:element name="color" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="manufactureOperationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="completed" type="xsd:boolean"/>
+          	<xsd:element name="deliveryDate" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="cancelManufactureOperation">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="orderId" type="xsd:int"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="cancelManufactureOperationResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="manufacturingCancelled" type="xsd:boolean"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="manufactureOperationResponse">
+    <wsdl:part name="parameters" element="tns:manufactureOperationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelManufactureOperationRequest">
+    <wsdl:part name="parameters" element="tns:cancelManufactureOperation">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelManufactureOperationResponse">
+    <wsdl:part name="parameters" element="tns:cancelManufactureOperationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="manufactureOperationRequest">
+    <wsdl:part name="parameters" element="tns:manufactureOperation">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ManufacturingWS">
+    <wsdl:operation name="manufactureOperation">
+      <wsdl:input message="tns:manufactureOperationRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:manufactureOperationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ManufacturingSOAP" type="tns:ManufacturingWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="manufactureOperation">
+      <soap:operation soapAction="http://autoinc.com/Manufacturing/manufactureOperation"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Manufacturing">
+    <wsdl:port name="ManufacturingSOAP" binding="tns:ManufacturingSOAP">
+      <soap:address location="http://localhost:8080/FACTORY/services/ManufacturingWS/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

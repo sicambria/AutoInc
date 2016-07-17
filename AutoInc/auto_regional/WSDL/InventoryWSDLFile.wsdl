@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.autoinc.com/InventoryWSDLFile/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="InventoryWSDLFile" targetNamespace="http://www.autoinc.com/InventoryWSDLFile/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.autoinc.com/InventoryWSDLFile/">
+      <xsd:element name="supplyParts">
+        <xsd:complexType>
+          <xsd:sequence>
+
+          	<xsd:element name="partName" type="xsd:string"></xsd:element>
+          	<xsd:element name="quantity" type="xsd:int"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="supplyPartsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="result" type="xsd:boolean" />
+          	<xsd:element name="availableQuantity" type="xsd:int"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addParts">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="partName" type="xsd:string"></xsd:element>
+      			<xsd:element name="quantity" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addPartsResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="result" type="xsd:boolean"></xsd:element>
+      			<xsd:element name="availableQuantity" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateParts">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="partName" type="xsd:string"></xsd:element>
+      			<xsd:element name="quantity" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updatePartsResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="result" type="xsd:boolean"></xsd:element>
+      			<xsd:element name="availableQuantity" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getParts">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="partName" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getPartsResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="result" type="xsd:boolean"></xsd:element>
+      			<xsd:element name="availableQuantity" type="xsd:int"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="supplyPartsRequest">
+    <wsdl:part element="tns:supplyParts" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="supplyPartsResponse">
+    <wsdl:part element="tns:supplyPartsResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="addPartsRequest">
+  	<wsdl:part name="parameters" element="tns:addParts"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addPartsResponse">
+  	<wsdl:part name="parameters" element="tns:addPartsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePartsRequest">
+  	<wsdl:part name="parameters" element="tns:updateParts"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePartsResponse">
+  	<wsdl:part name="parameters" element="tns:updatePartsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPartsRequest">
+  	<wsdl:part name="parameters" element="tns:getParts"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPartsResponse">
+  	<wsdl:part name="parameters" element="tns:getPartsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="InventoryWSDLFile">
+    <wsdl:operation name="supplyParts">
+      <wsdl:input message="tns:supplyPartsRequest"/>
+      <wsdl:output message="tns:supplyPartsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="addParts">
+    	<wsdl:input message="tns:addPartsRequest"></wsdl:input>
+    	<wsdl:output message="tns:addPartsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateParts">
+    	<wsdl:input message="tns:updatePartsRequest"></wsdl:input>
+    	<wsdl:output message="tns:updatePartsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getParts">
+    	<wsdl:input message="tns:getPartsRequest"></wsdl:input>
+    	<wsdl:output message="tns:getPartsResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InventoryWSDLFileSOAP"
+  	type="tns:InventoryWSDLFile">
+
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="supplyParts">
+
+  		<soap:operation
+  			soapAction="http://www.autoinc.com/InventoryWSDLFile/supplyParts" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="addParts">
+
+  		<soap:operation
+  			soapAction="http://www.autoinc.com/InventoryWSDLFile/addParts" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="updateParts">
+
+  		<soap:operation
+  			soapAction="http://www.autoinc.com/InventoryWSDLFile/updateParts" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="getParts">
+
+  		<soap:operation
+  			soapAction="http://www.autoinc.com/InventoryWSDLFile/getParts" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InventoryWSDLFile">
+    <wsdl:port binding="tns:InventoryWSDLFileSOAP" name="InventoryWSDLFileSOAP">
+      <soap:address location="http://localhost:8080/Auto_Regional/services/Auto_Inventory"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

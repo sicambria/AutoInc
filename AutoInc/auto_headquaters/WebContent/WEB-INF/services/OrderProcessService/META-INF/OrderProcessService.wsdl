@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="OrderProcess" targetNamespace="buffalo.autoinc.com" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:tns="buffalo.autoinc.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="buffalo.autoinc.com" xmlns="http://www.w3.org/2001/XMLSchema">
+
+            <element name="OrderProcessRequest">
+                <complexType>
+                    <sequence>
+                    	<element name="orderId" type="int"/>
+                    	<element name="customerId" type="int"/>
+                    	<element name="customerName" type="string"/>
+                    	<element name="address" type="string"/>
+                    	<element name="country" type="string"/>
+                    	<element name="accountNumber" type="string"/>
+                    	<element name="bank" type="string"/>
+                    	<element name="model" type="string"/>
+                    	<element name="edition" type="string"/>
+                    	<element name="color" type="string"/>
+                    	<element name="quantity" type="int"/>
+                    	<element name="amount" type="int"/>
+                    </sequence>
+                </complexType>
+            </element>
+
+            <element name="OrderProcessResponse">
+                <complexType>
+                    <sequence>
+                    	<element name="result" type="string"/>
+                    	<element name="resultPayment" type="boolean"/>
+                    	<element name="resultRESales" type="boolean"/>
+                    	<element name="resultCheckCars" type="boolean"/>
+                    	<element name="resultResupply" type="boolean"/>
+                    	<element name="resultManufacturing" type="boolean">
+                    	</element>
+                    	<element name="resultShipment" type="boolean"/>
+                    	<element name="orderedCars" type="int"/>
+                    	<element name="transactionId" type="int"/>
+                    	<element name="deliveryDate" type="string"/>
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+  </types>
+  <message name="OrderProcessResponseMessage">
+    <part name="payload" element="tns:OrderProcessResponse">
+    </part>
+  </message>
+  <message name="OrderProcessRequestMessage">
+    <part name="payload" element="tns:OrderProcessRequest">
+    </part>
+  </message>
+  <portType name="OrderProcess">
+    <operation name="process">
+      <input message="tns:OrderProcessRequestMessage">
+    </input>
+      <output message="tns:OrderProcessResponseMessage">
+    </output>
+    </operation>
+  </portType>
+  <binding name="OrderProcessBinding" type="tns:OrderProcess">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="process">
+      <soap:operation soapAction="buffalo.autoinc.com/process"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="OrderProcessService">
+    <port name="OrderProcessPort" binding="tns:OrderProcessBinding">
+      <soap:address location="http://localhost:8080/ode/processes/OrderProcess"/>
+    </port>
+  </service>
+    <plnk:partnerLinkType name="BankPLT">
+    <plnk:role name="doPayment" portType="wsdl:PaymentGateway"/>
+  </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="CarInventoryPLT">
+    <plnk:role name="checkCars" portType="wsdl1:CarInventoryWSDLFile"/>
+  </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="RESalesPLT">
+    <plnk:role name="doRESales" portType="wsdl4:RegionalSalesWSDLFile"/>
+  </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="ShippingPLT">
+    <plnk:role name="doShipping" portType="wsdl5:AutoShippingWS"/>
+  </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="ResupplyPLT">
+    <plnk:role name="doResupply" portType="wsdl2:ResupplyWS"/>
+  </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="ManufacturingPLT">
+    <plnk:role name="doManufacture" portType="wsdl3:ManufacturingWS"/>
+  </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="OrderProcess">
+        <plnk:role name="OrderProcessProvider" portType="tns:OrderProcess"/>
+    </plnk:partnerLinkType>
+</definitions>

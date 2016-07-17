@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="CancelTransaction" targetNamespace="http://buffalo.bank.com/CancelTransaction/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://buffalo.bank.com/CancelTransaction/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://buffalo.bank.com/CancelTransaction/">
+      <xsd:element name="cancelTransactionByTransactionId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="transactionId" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="cancelTransactionByTransactionIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="cancelTransactionResult" type="xsd:boolean"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="cancelTransactionByTransactionIdResponse">
+    <wsdl:part name="parameters" element="tns:cancelTransactionByTransactionIdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelTransactionByTransactionIdRequest">
+    <wsdl:part name="parameters" element="tns:cancelTransactionByTransactionId">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CancelTransaction">
+    <wsdl:operation name="cancelTransactionByTransactionId">
+      <wsdl:input message="tns:cancelTransactionByTransactionIdRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:cancelTransactionByTransactionIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CancelTransactionSOAP" type="tns:CancelTransaction">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="cancelTransactionByTransactionId">
+      <soap:operation soapAction="http://buffalo.bank.com/CancelTransaction/cancelTransactionByTransactionId"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CancelTransaction">
+    <wsdl:port name="CancelTransactionSOAP" binding="tns:CancelTransactionSOAP">
+      <soap:address location="http://213.165.86.215:8080/Bank/services/CancelTransaction/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

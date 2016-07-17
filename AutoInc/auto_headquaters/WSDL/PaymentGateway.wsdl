@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="PaymentGateway" targetNamespace="http://buffalo.bank.com/PaymentGateway/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://buffalo.bank.com/PaymentGateway/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://buffalo.bank.com/PaymentGateway/">
+      <xsd:element name="ProcessPayment">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="accountNumber" type="xsd:string"/>
+          	<xsd:element name="customerName" type="xsd:string"/>
+          	<xsd:element name="bank" type="xsd:string"/>
+          	<xsd:element name="ref" type="xsd:int"/>
+          	<xsd:element name="amount" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ProcessPaymentResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="transactionId" type="xsd:int"/>
+          	<xsd:element name="paymentAccepted" type="xsd:boolean"/>
+          	<xsd:element name="comment" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ProcessPaymentResponse">
+    <wsdl:part name="parameters" element="tns:ProcessPaymentResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ProcessPaymentRequest">
+    <wsdl:part name="parameters" element="tns:ProcessPayment">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PaymentGateway">
+    <wsdl:operation name="ProcessPayment">
+      <wsdl:input message="tns:ProcessPaymentRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:ProcessPaymentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PaymentGatewaySOAP" type="tns:PaymentGateway">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ProcessPayment">
+      <soap:operation soapAction="http://buffalo.bank.com/PaymentGateway/ProcessPayment"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PaymentGateway">
+    <wsdl:port name="PaymentGatewaySOAP" binding="tns:PaymentGatewaySOAP">
+      <soap:address location="http://213.165.86.215:8080/Bank/services/PaymentGateway/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

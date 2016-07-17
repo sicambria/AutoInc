@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:AutoShippingWS="http://www.autoinc.com/AutoShippingWS/" xmlns:Auto_Regional="http://autoinc.com/Auto_Regional/" xmlns:CarInventoryWSDLFile="http://www.autoinc.com/CarInventoryWSDLFile/" xmlns:Manufacturing="http://autoinc.com/Manufacturing/" xmlns:PaymentGateway="http://buffalo.bank.com/PaymentGateway/" xmlns:Resupply="http://autoinc.com/Resupply/" xmlns:buffalo.autoinc.com="buffalo.autoinc.com">
+  <process name="buffalo.autoinc.com:OrderProcess">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="client">
+      <service name="buffalo.autoinc.com:OrderProcessService" port="OrderProcessPort"/>
+    </provide>
+    <invoke partnerLink="BankPL">
+      <service name="PaymentGateway:PaymentGateway" port="PaymentGatewaySOAP"/>
+    </invoke>
+    <invoke partnerLink="CarInventoryPL">
+      <service name="CarInventoryWSDLFile:CarInventoryWSDLFile" port="CarInventoryWSDLFileSOAP"/>
+    </invoke>
+    <invoke partnerLink="RESalesPL">
+      <service name="Auto_Regional:RegionalSalesWSDLFile" port="Auto_RegionalSOAP"/>
+    </invoke>
+    <invoke partnerLink="ShippingPL">
+      <service name="AutoShippingWS:AutoShippingWS" port="AutoShippingWSSOAP"/>
+    </invoke>
+    <invoke partnerLink="ResupplyPL">
+      <service name="Resupply:Resupply" port="ResupplySOAP"/>
+    </invoke>
+    <invoke partnerLink="ManufacturingPL">
+      <service name="Manufacturing:Manufacturing" port="ManufacturingSOAP"/>
+    </invoke>
+  </process>
+</deploy>
